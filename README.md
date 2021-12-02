@@ -1,2 +1,2 @@
 # espn-ncaa-scrape
-Basic python code for scraping ESPNs API &amp; parsing
+Basic python code for scraping & parsing ESPNs API
