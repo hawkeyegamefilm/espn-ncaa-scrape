@@ -26,4 +26,4 @@ https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{t
 http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?groups=80
 
 #### Historical schedule by year
-https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{teamId}/schedule?season={year in YYYY}
+https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{teamId}/schedule?season={year}
