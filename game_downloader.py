@@ -1,3 +1,4 @@
+import http.client
 import io
 import urllib.request
 
@@ -9,7 +10,10 @@ write_path_template = "data/{year}/{id}.json"
 def download_game(year, id):
     with urllib.request.urlopen(url_template.format(id=id)) as url:
         with io.open(write_path_template.format(year=year, id=id), 'w', encoding='utf-8') as file:
-            file.write(url.read().decode())
+            try:
+                file.write(url.read().decode())
+            except http.client.IncompleteRead as e:
+                print('incomplete read for: ' + id + " " + e)
             file.close()
 
 
@@ -26,8 +30,9 @@ def download_game(year, id):
 # 2006 Iowa games
 # list_2006 = [262452294,263642294,262520183,262592294,262660356,262732294,262802294,262870084,262940130,263012294,263082294,263152294,263220135]
 # 2007 Iowa games
-list_2007 = [272442459,272512294,272580066,272650275,272722294,272790213,272862294,272932509,273002294,273070077,273142294,273212294]
+# list_2007 = [272442459,272512294,272580066,272650275,272722294,272790213,272862294,272932509,273002294,273070077,273142294,273212294]
+list= [401331447]
 
-y = 2007
-for game_id in list_2007:
+y = 2021
+for game_id in list:
     download_game(y, game_id)

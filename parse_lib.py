@@ -61,6 +61,11 @@ def parse_drive_details(game_id, drive_idx, team_map, drive, previous_end_type):
 
 
 def parse_play_details(game_id,  o_team_id, d_team_id, drive_num, play_idx, play):
+    play_type = "uncategorized"
+    if 'type' in play.keys():
+        play_type = play['type']['text']
+    else:
+        print(str(game_id) + "|" + play['text'])
     text = ""  # defaulting text to handle bad data, several instances of missing text on play json
     if 'text' in play.keys():
         text = play['text']
@@ -68,7 +73,7 @@ def parse_play_details(game_id,  o_team_id, d_team_id, drive_num, play_idx, play
                 drive_num,
                 play['id'],
                 play_idx,
-                play['type']['text'],
+                play_type,
                 parse_clock_str(play['clock']['displayValue']),
                 o_team_id,
                 d_team_id,

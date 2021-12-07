@@ -8,11 +8,11 @@ carries = 0
 yards = 0
 carry_list = []
 
-y = 2007
-g = 272442459
+y = 2021
+g = 401282052
 rusher = "Sims"  # fill me in
 
-game_file = open("data/{y}/{g}.json".format(y=y, g=g), encoding="utf8")
+game_file = open("data/{y}/{g}.json".format(y=y, g=g), encoding="utf-8-sig")
 game_json = json.load(game_file)
 game_obj = parse_espn_json(game_json)
 for dr in game_obj.drives:

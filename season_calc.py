@@ -18,7 +18,7 @@ carries = 0
 yards = 0
 carry_list = []
 for g in games_2007:
-    game_file = open("data/{y}/{g}.json".format(g=g, y=year), encoding="utf8")
+    game_file = open("data/{y}/{g}.json".format(g=g, y=year), encoding="utf-8-sig")
     game_json = json.load(game_file)
     game_ret = parse_espn_json(game_json)
     for dr in game_ret.drives:
