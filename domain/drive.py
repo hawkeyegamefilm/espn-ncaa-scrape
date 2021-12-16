@@ -6,6 +6,7 @@ class Drive:
     game_id: int
     drive_id: int
     team_id: int
+    opponent_id: int
     drive_num: int
     start_time: int
     start_period: int
@@ -16,6 +17,6 @@ class Drive:
     end_spot: int
     end_type: str
     play_count: int
-    play_yards: int
+    yards: int
     top: int
     plays: []

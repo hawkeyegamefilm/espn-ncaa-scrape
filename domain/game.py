@@ -5,8 +5,8 @@ from dataclasses import dataclass
 class Game:
     id: int
     date: str
-    week: int
     season: int
+    week: int
     stadium: int
     broadcast: str
     attendance: int

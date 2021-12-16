@@ -15,8 +15,8 @@ def parse_game_details(game_info_block, header):
         venue = int(game_info_block['venue']['id'])
     return Game(int(header['id']),
                 header['competitions'][0]['date'],
-                header['week'],
                 header['season']['year'],
+                header['week'],
                 venue,
                 broadcast,
                 game_info_block['attendance'],
@@ -32,6 +32,7 @@ def parse_drive_details(game_id, drive_idx, team_map, drive, previous_end_type):
     end_yard_line = 0
     drive_result = "END OF GAME"  # defaulting drive result due to some old formats that seem to require it
     time_elapsed = 0
+    o_team_id = team_map[drive['team']['name']]
     if 'timeElapsed' in drive.keys():
         time_elapsed = parse_clock_str(drive['timeElapsed']['displayValue'])
     if 'end' in drive.keys() and 'clock' in drive['end'].keys():
@@ -44,7 +45,8 @@ def parse_drive_details(game_id, drive_idx, team_map, drive, previous_end_type):
         start_time_value = parse_clock_str(drive['start']['clock']['displayValue'])
     return Drive(game_id,
                  int(drive['id']),
-                 team_map[drive['team']['name']],
+                 o_team_id,
+                 get_defensive_team_id(team_map, o_team_id),
                  drive_idx,
                  start_time_value,
                  drive['start']['period']['number'],
